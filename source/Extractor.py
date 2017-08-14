@@ -7,14 +7,14 @@ def clean_words(word_list):
 
 
 def is_plate_prefix(word):
-    print 'check for prefix: ' + word
+    # print 'check for prefix: ' + word
     # rule out words that don't begin with 'K'
     if word[0] != "K":
-        print word + " does not begin with 'K'"
+        # print word + " does not begin with 'K'"
         return False
     # rule out words which don't equal 3 chars
     if len(word) != 3:
-        print word + "does not equal 3 chars"
+        # print word + "does not equal 3 chars"
         return False
     # rule out words with numbers
     if not word.isalpha():
@@ -23,14 +23,14 @@ def is_plate_prefix(word):
 
 
 def is_plate_suffix(word):
-    print 'check for suffix'
+    # print 'check for suffix'
     # rule out words which don't equal 4 chars
     if len(word) != 4:
-        print word + " does not equal 4 chars"
+        # print word + " does not equal 4 chars"
         return False
     # rule out words that don't end with a letter
     if not word[-1:].isalpha():
-        print word + " does not end with a letter"
+        # print word + " does not end with a letter"
         return False
     # make sure that the first 3 chars are numbers
     if not word[:3].isdigit():
