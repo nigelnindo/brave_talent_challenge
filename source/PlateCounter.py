@@ -13,14 +13,12 @@ def get_numeric_index(number):
 
 
 def compute(tagged_list):
-    """
-    prefix_product = tagged_list[0] * tagged_list[1]
-    suffix_sum = (999 * tagged_list[3]) + tagged_list[2]
-    return (prefix_product * suffix_sum) - 999
-    """
+    second_suffix_val = tagged_list[1]
+    if tagged_list[0] > 1:
+        print 'Set second suffix val to 26'
+        second_suffix_val = 26
     suffix_val = (tagged_list[2] + (999 * (tagged_list[3] - 1)))
-    max_suffix_val = 999 * 26
-    return (tagged_list[0] * tagged_list[1] * max_suffix_val) - (max_suffix_val - suffix_val)
+    return (tagged_list[0] * second_suffix_val * 999 * 26) - (999 * 26 - suffix_val)
 
 
 def clean_and_tag(number_plate):

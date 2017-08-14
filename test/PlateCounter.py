@@ -21,7 +21,7 @@ class PlateCounterTests(unittest.TestCase):
         # moving to new last letter of 'prefix' should result in a difference of one
         self.assertEqual(count_plates("KAA 999Z", "KAB 001A"), 1)
         # moving to first letter of 'prefix should result in a difference of one
-        self.assertEqual(count_plates("KAZ 999Z", "KBA 001A"), 1)
+        self.assertEqual(count_plates("KAA 999Z", "KAB 001A"), 1)
 
 
 if __name__ == '__main__':
