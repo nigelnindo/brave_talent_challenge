@@ -17,7 +17,7 @@ class NumberPlateTests(unittest.TestCase):
         self.assertEqual(get_number_plate(sentence), 'KBA 951J')
 
     def test_invalid_number_plate(self):
-        # should fail if a letter isn't the last character
+        # should fail if a letter isn't the last character in plate suffix
         sentence = "KBA 9511 was bought by Mercy"
         self.assertEqual(get_number_plate(sentence), NEGATIVE_RESULT)
         # should fail if any of first three characters in plate suffix is a string
