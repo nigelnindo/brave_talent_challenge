@@ -1,3 +1,7 @@
+import os
+
+os.chdir(os.getcwd())
+
 from Extractor import get_number_plate
 
 
@@ -11,7 +15,7 @@ def get_alphabet_index(character):
 def get_numeric_index(number):
     return number + 1
 
-
+"""
 def compute(tagged_list):
     second_suffix_val = tagged_list[1]
     if tagged_list[0] > 1:
@@ -19,6 +23,15 @@ def compute(tagged_list):
         second_suffix_val = 26
     suffix_val = (tagged_list[2] + (999 * (tagged_list[3] - 1)))
     return (tagged_list[0] * second_suffix_val * 999 * 26) - (999 * 26 - suffix_val)
+"""
+
+
+def compute2(tagged_list):
+    return (
+        ((tagged_list[0] - 1) * 999 * 26 * 26) +
+        ((tagged_list[1] - 1) * 999 * 26) +
+        (tagged_list[2] + (999 * (tagged_list[3] - 1)))
+    )
 
 
 def clean_and_tag(number_plate):
@@ -35,8 +48,8 @@ def clean_and_tag(number_plate):
 def count_plates(start_plate, end_plate):
     if get_number_plate(start_plate) == 'NO PLATE' or get_number_plate(end_plate) == 'NO PLATE':
         return 'INVALID PLATE'
-    start_value = compute(clean_and_tag(start_plate))
-    end_value = compute(clean_and_tag(end_plate))
+    start_value = compute2(clean_and_tag(start_plate))
+    end_value = compute2(clean_and_tag(end_plate))
     print start_value
     print end_value
     if start_value > end_value:
@@ -44,7 +57,7 @@ def count_plates(start_plate, end_plate):
     else:
         return end_value - start_value
 
-print count_plates("KAZ 999Z", "KBA 001A")
+print count_plates("KAA 001A", "KAA 999A")
 
 """
 Assumptions:
