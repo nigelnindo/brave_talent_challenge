@@ -1,0 +1,85 @@
+# API spec in YAML
+swagger: '2.0'
+info:
+  title: Brave Talent API
+  description: Swagger docs for the brave talent test API
+  version: "1.0.0"
+# the domain of the service
+host:  188.226.159.24:5000
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /extractor:
+    get:
+      summary: Extract number plate.
+      description: |
+        Prived a sentence and the extractor will get the number plate from it.
+      parameters:
+        - name: sentence
+          in: query
+          description: Sentence from which to extract the number plate.
+          required: true
+          type: string
+      tags:
+        - Extraction
+      responses:
+        200:
+          description: An array of products
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ExtractorResult'
+        default:
+          description: Request Error
+          schema:
+            $ref: '#/definitions/Error'
+  /difference:
+    get:
+      summary: Difference between number plates.
+      description: Takes two number plates and gets the difference between the largest and the smallest of the two.
+      parameters:
+        - name: firstPlate
+          in: query
+          description: A number plate, or sentence containing a number plate.
+          required: true
+          type: string
+        - name: secondPlate
+          in: query
+          description: A number plate, or sentence containing a number plate.
+          required: true
+          type: string
+      tags:
+        - Counting
+      responses:
+        200:
+          description: Result of successfully getting the difference between the number plates.
+          schema:
+            $ref: '#/definitions/CounterResult'
+        default:
+          description: Request Error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  ExtractorResult:
+    type: object
+    properties:
+      result:
+        type: string
+        description: The extracted number plate.
+  CounterResult:
+    type: object
+    properties:
+      result:
+        type: number
+        description: The difference between the two numbers
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+
