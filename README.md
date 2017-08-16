@@ -4,7 +4,7 @@ Python Project for Brave Talent developer test.
 
 ## REST API 
 
-The `host` and `port` for the Java API is `188.226.159.24:5000`
+The `host` and `port` for the Python API is `188.226.159.24:5000`
 
 ### API Documentation
 
