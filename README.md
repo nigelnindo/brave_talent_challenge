@@ -2,9 +2,34 @@
 
 Python Project for Brave Talent developer test.
 
-## REST API Documentation
+## REST API 
 
-Copy [the](https://github.com/nigelnindo/brave_talent_python/blob/develop/swagger.yaml) contents of the Swagger YAML file into s Swagger Editor of your choice. If you don't have one, use the online editor found [here](https://editor2.swagger.io/). This it will then auto-generate the formatted documentation for you.
+The `host` and `port` for the Java API is `188.226.159.24:5000`
+
+### API Documentation
+
+Copy [the contents](https://github.com/nigelnindo/brave_talent_python/blob/develop/swagger.yaml) of the Swagger YAML file into a Swagger Editor of your choice. If you don't have one, use the online editor found [here](https://editor2.swagger.io/). This it will then auto-generate the formatted documentation for you.
+
+### Examples
+
+```shell
+# Extract a number plate from a sentence 
+$ curl -X GET "http://188.226.159.24:5000/api/extractor?sentence=Ken%20had%20a%20KCA%20001a%20yesterday." -H "accept: application/json"
+
+# JSON result from API call
+{
+  "result": "KCA 001A"
+}
+
+# Get the Difference between two number plates
+$ curl -X GET "http://188.226.159.24:5000/api/difference?firstPlate=KAZ%20999Z&secondPlate=KBA%20001A" -H "accept: application/json"
+
+# JSON result from API call
+{
+  "result": 1
+}
+
+```
 
 ## Docker
 
@@ -36,3 +61,6 @@ $ pip install -r requirements.txt
 $ python source/Server.py
 ```
 
+## Deployment
+
+[Deployment 1](https://github.com/nigelnindo/brave_talent_java/blob/develop/deployment_1.png) outlines the build process from local to DockerHub, and [Deployment 2](https://github.com/nigelnindo/brave_talent_java/blob/develop/deplyoment_2.png) outlines the build process from DockerHub to the a client connection.

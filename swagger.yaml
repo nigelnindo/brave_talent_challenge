@@ -18,7 +18,8 @@ paths:
     get:
       summary: Extract number plate.
       description: |
-        Prived a sentence and the extractor will get the number plate from it.
+        Provide a sentence and the extractor will get the number plate from it. If there is no number plate, the route returns 'NO PLATE'.
+        Will not detect a number plate if there is no spacing between the prefix and suffix i.e 'KBA123A'
       parameters:
         - name: sentence
           in: query
@@ -29,7 +30,7 @@ paths:
         - Extraction
       responses:
         200:
-          description: An array of products
+          description: Will return a 200 response if whether it detected a number plate in the sentence or not. You either get back a number plate i.e 'KBA 123A' or  'NO PLATE'.
           schema:
             type: array
             items:
@@ -41,7 +42,9 @@ paths:
   /difference:
     get:
       summary: Difference between number plates.
-      description: Takes two number plates and gets the difference between the largest and the smallest of the two.
+      description: |
+        Takes two number plates and gets the difference between the largest and the smallest of the two.
+        Will not detect a number plate if there is no spacing between the prefix and suffix i.e 'KBA123A'
       parameters:
         - name: firstPlate
           in: query
@@ -82,4 +85,5 @@ definitions:
     properties:
       message:
         type: string
+        description: Reason why the server rejected the request
 
